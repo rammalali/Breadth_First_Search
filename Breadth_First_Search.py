@@ -4,7 +4,7 @@ import pandas as pd
 def ParcoursLargeur(matrice, s):
     elm = s
     k = 0
-    cue = []
+    Q = []
     print(len(matrice[0]))
     for i in range(len(matrice[0])):
         mydect[i] = -1
@@ -12,21 +12,23 @@ def ParcoursLargeur(matrice, s):
         for i in range(len(matrice[0])):
             if matrice[elm, i] != 0:
                 if mydect[i] == -1:
-                    cue.insert(0, i)
+                    Q.insert(0, i)
                 mydect[elm] = 1
                 mydect[i] = 1
 
         print("----------------------------------------------------------------------------------------------------------")
         print(pd.Series(mydect))
-        print(cue)
+        if(sum(mydect.values()) == len(matrice)):
+            break
+        print(Q)
         print("----------------------------------------------------------------------------------------------------------")
 
-        elm = cue[-1]
+        elm = Q[-1]
         print("elem = ", elm)
-        if (len(cue)>1):
-            del cue[-1]
+        if (len(Q)>1):
+            del Q[-1]
 
-        print(cue)
+        print(Q)
         k += 1
 
 
